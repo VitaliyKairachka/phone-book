@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "numbers")
+public class PhoneNumber {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -26,28 +26,24 @@ public class User {
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinTable(name = "user_numbers",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "number_id"))
-    private List<PhoneNumber> phoneNumbers;
+            joinColumns = @JoinColumn(name = "number_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> users;
 
-    public User() {
+    public PhoneNumber() {
     }
 
-    public User(String name, String surname, String phoneNumber) {
+    public PhoneNumber(String name, String surname, String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
     }
 
-    public void addNumberToUser(PhoneNumber phoneNumber) {
-        if (phoneNumbers == null) {
-            phoneNumbers = new ArrayList<>();
+    public void addUserToPhoneNumber(User user) {
+        if (users == null) {
+            users = new ArrayList<>();
         }
-        phoneNumbers.add(phoneNumber);
-    }
-    
-    public List<PhoneNumber> getUserNumbers() {
-        return phoneNumbers;
+        users.add(user);
     }
 
     public int getId() {
@@ -80,5 +76,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
