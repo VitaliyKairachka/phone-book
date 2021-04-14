@@ -3,15 +3,13 @@ package com.vitaliykairachka.phone_book.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "numbers")
+@Table(name = "contacts")
 public class PhoneNumber {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_contact")
     private int id;
 
     @Column(name = "name")
@@ -24,11 +22,9 @@ public class PhoneNumber {
     private String phoneNumber;
 
     @JsonIgnore
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinTable(name = "user_numbers",
-            joinColumns = @JoinColumn(name = "number_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<User> users;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_user", nullable = false)
+    private User user;
 
     public PhoneNumber() {
     }
@@ -39,12 +35,6 @@ public class PhoneNumber {
         this.phoneNumber = phoneNumber;
     }
 
-    public void addUserToPhoneNumber(User user) {
-        if (users == null) {
-            users = new ArrayList<>();
-        }
-        users.add(user);
-    }
 
     public int getId() {
         return id;
@@ -78,11 +68,11 @@ public class PhoneNumber {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

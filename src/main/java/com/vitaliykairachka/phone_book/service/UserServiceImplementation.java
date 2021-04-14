@@ -1,6 +1,6 @@
 package com.vitaliykairachka.phone_book.service;
 
-import com.vitaliykairachka.phone_book.dao.UserRepository;
+import com.vitaliykairachka.phone_book.repository.UserRepository;
 import com.vitaliykairachka.phone_book.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

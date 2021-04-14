@@ -1,7 +1,6 @@
 package com.vitaliykairachka.phone_book.service;
 
-import com.vitaliykairachka.phone_book.dao.PhoneNumberRepository;
-import com.vitaliykairachka.phone_book.dao.UserRepository;
+import com.vitaliykairachka.phone_book.repository.PhoneNumberRepository;
 import com.vitaliykairachka.phone_book.entity.PhoneNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,18 +13,9 @@ public class PhoneNumberServiceImplementation implements PhoneNumberService {
     @Autowired
     private PhoneNumberRepository phoneNumberRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Override
-    public List<PhoneNumber> getAllUserNumbers() {
-        return phoneNumberRepository.findAll();
-    }
-
     @Override
     public void saveNumber(PhoneNumber phoneNumber) {
         phoneNumberRepository.save(phoneNumber);
-
     }
 
     @Override

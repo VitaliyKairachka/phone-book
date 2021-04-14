@@ -25,7 +25,7 @@ public class PhoneNumberController {
     }
 
     @GetMapping("/number/{id}")
-    public PhoneNumber getPhoneNumberOfUser(@PathVariable int id) {
+    public PhoneNumber getPhoneNumber(@PathVariable int id) {
         return phoneNumberService.getNumber(id);
     }
 
@@ -37,10 +37,17 @@ public class PhoneNumberController {
         return phoneNumber;
     }
 
-    @PutMapping("/number/")
+    @PutMapping("/number")
     public PhoneNumber updatePhoneNumber(@RequestBody PhoneNumber phoneNumber) {
-        phoneNumberService.saveNumber(phoneNumber);
-        return phoneNumber;
+        PhoneNumber phoneNumber1 = null;
+        if (phoneNumber != null) {
+            phoneNumber1 = phoneNumberService.getNumber(phoneNumber.getId());
+            phoneNumber1.setName(phoneNumber.getName());
+            phoneNumber1.setSurname(phoneNumber.getSurname());
+            phoneNumber1.setPhoneNumber(phoneNumber.getPhoneNumber());
+        }
+        phoneNumberService.saveNumber(phoneNumber1);
+        return phoneNumber1;
     }
 
     @DeleteMapping("/number/{id}")

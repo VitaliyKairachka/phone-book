@@ -1,7 +1,5 @@
 package com.vitaliykairachka.phone_book.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +21,7 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @JsonIgnore
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinTable(name = "user_numbers",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "number_id"))
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<PhoneNumber> phoneNumbers;
 
     public User() {
@@ -44,8 +38,9 @@ public class User {
             phoneNumbers = new ArrayList<>();
         }
         phoneNumbers.add(phoneNumber);
+        phoneNumber.setUser(this);
     }
-    
+
     public List<PhoneNumber> getUserNumbers() {
         return phoneNumbers;
     }
