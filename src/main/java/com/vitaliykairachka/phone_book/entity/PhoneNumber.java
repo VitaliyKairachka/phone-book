@@ -3,6 +3,9 @@ package com.vitaliykairachka.phone_book.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "contacts")
@@ -13,12 +16,18 @@ public class PhoneNumber {
     private int id;
 
     @Column(name = "name")
+    @NotEmpty(message = "{user.error.usernameRequired}")
+    @Pattern(regexp = "[A-Za-z]+", message = "{user.error.usernameRegexp}")
+    @Size(min = 3, message="{user.error.usernameLength}")
     private String name;
 
     @Column(name = "surname")
+    @Pattern(regexp = "[A-Za-z]+", message = "{user.error.usernameRegexp}")
+    @Size(min = 3, message="{user.error.usernameLength}")
     private String surname;
 
     @Column(name = "phone_number")
+    @Pattern(regexp = "^380[0-9]{9}$|^$", message = "{contact.error.mobilePhoneRegexp}")
     private String phoneNumber;
 
     @JsonIgnore
