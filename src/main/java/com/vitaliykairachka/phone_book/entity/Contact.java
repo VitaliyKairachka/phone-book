@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "contacts")
-public class PhoneNumber {
+public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_contact")
@@ -27,18 +27,18 @@ public class PhoneNumber {
     private String surname;
 
     @Column(name = "phone_number")
-    @Pattern(regexp = "^380[0-9]{9}$|^$", message = "{contact.error.mobilePhoneRegexp}")
+    @Pattern(regexp = "((8|\\+7)-?)?\\(?\\d{3}\\)?-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}", message = "{contact.error.mobilePhoneRegexp}")
     private String phoneNumber;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_user", nullable = false)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "id_user", updatable = false, nullable = false)
     private User user;
 
-    public PhoneNumber() {
+    public Contact() {
     }
 
-    public PhoneNumber(String name, String surname, String phoneNumber) {
+    public Contact(String name, String surname, String phoneNumber) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;

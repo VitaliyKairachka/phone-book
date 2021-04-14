@@ -27,11 +27,11 @@ public class User {
     private String surname;
 
     @Column(name = "phone_number")
-    @Pattern(regexp = "^380[0-9]{9}$|^$", message = "{contact.error.mobilePhoneRegexp}")
+    @Pattern(regexp = "((8|\\+7)-?)?\\(?\\d{3}\\)?-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}", message = "{contact.error.mobilePhoneRegexp}")
     private String phoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<PhoneNumber> phoneNumbers;
+    private List<Contact> contacts;
 
     public User() {
     }
@@ -42,16 +42,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void addNumberToUser(PhoneNumber phoneNumber) {
-        if (phoneNumbers == null) {
-            phoneNumbers = new ArrayList<>();
+    public void addContactToUser(Contact contact) {
+        if (contacts == null) {
+            contacts = new ArrayList<>();
         }
-        phoneNumbers.add(phoneNumber);
-        phoneNumber.setUser(this);
-    }
-
-    public List<PhoneNumber> getUserNumbers() {
-        return phoneNumbers;
+        contacts.add(contact);
+        contact.setUser(this);
     }
 
     public int getId() {

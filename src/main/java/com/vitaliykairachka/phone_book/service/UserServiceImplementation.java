@@ -20,17 +20,27 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public void saveUser(User user) {
-        userRepository.save(user);
+        userRepository.saveAndFlush(user);
     }
 
     @Override
-    public User getUser(int id) {
+    public User getUserById(int id) {
         User user = null;
         Optional<User> optional = userRepository.findById(id);
         if (optional.isPresent()) {
             user = optional.get();
         }
         return user;
+    }
+
+    @Override
+    public User getUserByName(String name) {
+        return userRepository.findByName(name);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userRepository.saveAndFlush(user);
     }
 
     @Override
