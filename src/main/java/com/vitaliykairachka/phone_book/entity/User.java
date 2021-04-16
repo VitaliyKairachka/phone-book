@@ -1,4 +1,4 @@
-package com.vitaliykairachka.phone_book.model;
+package com.vitaliykairachka.phone_book.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -27,7 +27,8 @@ public class User {
     private String surname;
 
     @Column(name = "phone_number")
-    @Pattern(regexp = "((8|\\+7)-?)?\\(?\\d{3}\\)?-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}", message = "{contact.error.mobilePhoneRegexp}")
+    @Pattern(regexp = "((8|\\+7)-?)?\\(?\\d{3}\\)?-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}",
+            message = "{contact.error.mobilePhoneRegexp}")
     private String phoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

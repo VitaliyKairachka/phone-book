@@ -1,20 +1,22 @@
 package com.vitaliykairachka.phone_book.controller;
 
-import com.vitaliykairachka.phone_book.model.User;
+import com.vitaliykairachka.phone_book.entity.User;
 import com.vitaliykairachka.phone_book.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/contacts")
+@RequestMapping("/phoneBook")
 public class UserController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/users")
-    public List<User> showAllUsers() {
+    public List<User> getALlUsers() {
         return userService.getAllUsers();
     }
 
@@ -24,8 +26,8 @@ public class UserController {
     }
 
     @GetMapping("/users/name/{name}")
-    public <List>User getUserByName(@PathVariable String name) {
-        return userService.getUserByName(name);
+    public List<User> getUserByName(@PathVariable String name) {
+        return userService.getAllUsersByName(name);
     }
 
     @PostMapping("/users")

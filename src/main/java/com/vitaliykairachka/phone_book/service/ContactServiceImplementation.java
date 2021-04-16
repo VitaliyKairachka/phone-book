@@ -1,7 +1,7 @@
 package com.vitaliykairachka.phone_book.service;
 
 import com.vitaliykairachka.phone_book.repository.ContactRepository;
-import com.vitaliykairachka.phone_book.model.Contact;
+import com.vitaliykairachka.phone_book.entity.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,18 +14,13 @@ public class ContactServiceImplementation implements ContactService {
     private ContactRepository contactRepository;
 
     @Override
-    public List<Contact> findAll() {
-        return contactRepository.findAll();
-    }
-
-    @Override
-    public List<Contact> findAllUserContacts(int id) {
+    public List<Contact> getAllUserContacts(int id) {
         return contactRepository.findAllUserContacts(id);
     }
 
     @Override
-    public void saveContact(Contact contact) {
-        contactRepository.save(contact);
+    public Contact getPhoneNumber(String number) {
+        return contactRepository.findByPhoneNumber(number);
     }
 
 

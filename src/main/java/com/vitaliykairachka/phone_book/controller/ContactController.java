@@ -1,31 +1,38 @@
 package com.vitaliykairachka.phone_book.controller;
 
-import com.vitaliykairachka.phone_book.model.Contact;
-import com.vitaliykairachka.phone_book.model.User;
+import com.vitaliykairachka.phone_book.entity.Contact;
+import com.vitaliykairachka.phone_book.entity.User;
 import com.vitaliykairachka.phone_book.service.ContactService;
 import com.vitaliykairachka.phone_book.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/contacts")
+@RequestMapping("/phoneBook")
 public class ContactController {
-    @Autowired
-    private ContactService contactService;
+    private final ContactService contactService;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public ContactController(ContactService contactService, UserService userService) {
+        this.contactService = contactService;
+        this.userService = userService;
+    }
 
     @GetMapping("/contact/user/{id}")
     public List<Contact> showAllContactsOfUser(@PathVariable int id) {
-        return contactService.findAllUserContacts(id);
+        return contactService.getAllUserContacts(id);
     }
 
     @GetMapping("/contact/{id}")
     public Contact getContactById(@PathVariable int id) {
         return contactService.getContactById(id);
+    }
+
+    @GetMapping("/contact/number/{number}")
+    public Contact getContactByPhoneNumber(@PathVariable String number) {
+        return contactService.getPhoneNumber(number);
     }
 
     @PostMapping("/contact/user/{id}")

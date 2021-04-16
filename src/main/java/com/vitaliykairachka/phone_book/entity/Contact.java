@@ -1,4 +1,4 @@
-package com.vitaliykairachka.phone_book.model;
+package com.vitaliykairachka.phone_book.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,16 +18,17 @@ public class Contact {
     @Column(name = "name")
     @NotEmpty(message = "{user.error.usernameRequired}")
     @Pattern(regexp = "[A-Za-z]+", message = "{user.error.usernameRegexp}")
-    @Size(min = 3, message="{user.error.usernameLength}")
+    @Size(min = 3, message = "{user.error.usernameLength}")
     private String name;
 
     @Column(name = "surname")
     @Pattern(regexp = "[A-Za-z]+", message = "{user.error.usernameRegexp}")
-    @Size(min = 3, message="{user.error.usernameLength}")
+    @Size(min = 3, message = "{user.error.usernameLength}")
     private String surname;
 
     @Column(name = "phone_number")
-    @Pattern(regexp = "((8|\\+7)-?)?\\(?\\d{3}\\)?-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}", message = "{contact.error.mobilePhoneRegexp}")
+    @Pattern(regexp = "((8|\\+7)-?)?\\(?\\d{3}\\)?-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}-?\\d{1}",
+            message = "{contact.error.mobilePhoneRegexp}")
     private String phoneNumber;
 
     @JsonIgnore

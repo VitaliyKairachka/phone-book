@@ -1,15 +1,13 @@
 package com.vitaliykairachka.phone_book.service;
 
-import com.vitaliykairachka.phone_book.model.Contact;
+import com.vitaliykairachka.phone_book.entity.Contact;
 
 import java.util.List;
 
 public interface ContactService {
-    List<Contact> findAll();
+    List<Contact> getAllUserContacts(int id);
 
-    List<Contact> findAllUserContacts(int id);
-
-    void saveContact(Contact contact);
+    Contact getPhoneNumber(String number);
 
     Contact getContactById(int id);
 

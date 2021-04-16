@@ -1,7 +1,7 @@
 package com.vitaliykairachka.phone_book.service;
 
 import com.vitaliykairachka.phone_book.repository.UserRepository;
-import com.vitaliykairachka.phone_book.model.User;
+import com.vitaliykairachka.phone_book.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,10 +33,11 @@ public class UserServiceImplementation implements UserService {
         return user;
     }
 
-//    @Override
-//    public List<User> getAllUserByName(String name) {
-//        return userRepository.findAllUsersByName(name);
-//    }
+    @Override
+    public List<User> getAllUsersByName(String name) {
+        return userRepository.findAllByNameContaining(name);
+    }
+
 
     @Override
     public void updateUser(User user) {
