@@ -1,7 +1,7 @@
 package com.vitaliykairachka.phone_book.service;
 
 import com.vitaliykairachka.phone_book.repository.ContactRepository;
-import com.vitaliykairachka.phone_book.entity.Contact;
+import com.vitaliykairachka.phone_book.model.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class ContactServiceImplementation implements ContactService {
 
     @Override
     public void saveContact(Contact contact) {
-        contactRepository.saveAndFlush(contact);
+        contactRepository.save(contact);
     }
 
 
@@ -41,7 +41,7 @@ public class ContactServiceImplementation implements ContactService {
 
     @Override
     public Contact updateContact(Contact contact) {
-        return contactRepository.saveAndFlush(contact);
+        return contactRepository.save(contact);
     }
 
     @Override

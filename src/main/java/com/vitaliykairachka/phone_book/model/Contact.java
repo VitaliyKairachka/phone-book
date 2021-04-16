@@ -1,4 +1,4 @@
-package com.vitaliykairachka.phone_book.entity;
+package com.vitaliykairachka.phone_book.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

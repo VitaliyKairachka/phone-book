@@ -1,6 +1,6 @@
 package com.vitaliykairachka.phone_book.service;
 
-import com.vitaliykairachka.phone_book.entity.User;
+import com.vitaliykairachka.phone_book.model.User;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface UserService {
 
     User getUserById(int id);
 
-    User getUserByName(String name);
+    List<User> getAllUsersByName(String name);
 
     void updateUser(User user);
 

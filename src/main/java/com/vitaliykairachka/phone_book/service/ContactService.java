@@ -1,6 +1,6 @@
 package com.vitaliykairachka.phone_book.service;
 
-import com.vitaliykairachka.phone_book.entity.Contact;
+import com.vitaliykairachka.phone_book.model.Contact;
 
 import java.util.List;
 
