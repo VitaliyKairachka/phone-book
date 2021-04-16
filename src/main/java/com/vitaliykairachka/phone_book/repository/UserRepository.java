@@ -1,8 +1,8 @@
 package com.vitaliykairachka.phone_book.repository;
 
-import com.vitaliykairachka.phone_book.entity.User;
+import com.vitaliykairachka.phone_book.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-    User findByName(String name);
+    User findAllUsersByName(String name);
 }

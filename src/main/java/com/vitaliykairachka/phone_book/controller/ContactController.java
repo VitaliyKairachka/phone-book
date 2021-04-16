@@ -1,7 +1,7 @@
 package com.vitaliykairachka.phone_book.controller;
 
-import com.vitaliykairachka.phone_book.entity.Contact;
-import com.vitaliykairachka.phone_book.entity.User;
+import com.vitaliykairachka.phone_book.model.Contact;
+import com.vitaliykairachka.phone_book.model.User;
 import com.vitaliykairachka.phone_book.service.ContactService;
 import com.vitaliykairachka.phone_book.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

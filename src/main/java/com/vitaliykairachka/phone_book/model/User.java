@@ -1,4 +1,4 @@
-package com.vitaliykairachka.phone_book.entity;
+package com.vitaliykairachka.phone_book.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -18,12 +18,12 @@ public class User {
     @Column(name = "name")
     @NotEmpty(message = "{user.error.usernameRequired}")
     @Pattern(regexp = "[A-Za-z]+", message = "{user.error.usernameRegexp}")
-    @Size(min = 3, message="{user.error.usernameLength}")
+    @Size(min = 3, message = "{user.error.usernameLength}")
     private String name;
 
     @Column(name = "surname")
     @Pattern(regexp = "[A-Za-z]+", message = "{user.error.usernameRegexp}")
-    @Size(min = 3, message="{user.error.usernameLength}")
+    @Size(min = 3, message = "{user.error.usernameLength}")
     private String surname;
 
     @Column(name = "phone_number")
@@ -80,5 +80,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 }

@@ -1,6 +1,6 @@
 package com.vitaliykairachka.phone_book.repository;
 
-import com.vitaliykairachka.phone_book.entity.Contact;
+import com.vitaliykairachka.phone_book.model.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

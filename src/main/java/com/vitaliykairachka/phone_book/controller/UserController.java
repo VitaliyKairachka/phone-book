@@ -1,6 +1,6 @@
 package com.vitaliykairachka.phone_book.controller;
 
-import com.vitaliykairachka.phone_book.entity.User;
+import com.vitaliykairachka.phone_book.model.User;
 import com.vitaliykairachka.phone_book.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/users/name/{name}")
-    public User getUserByName(@PathVariable String name) {
+    public <List>User getUserByName(@PathVariable String name) {
         return userService.getUserByName(name);
     }
 
@@ -45,4 +45,5 @@ public class UserController {
         userService.deleteUser(id);
         return "User with ID = " + id + " was deleted";
     }
+
 }
