@@ -2,16 +2,17 @@ package com.vitaliykairachka.phone_book.service;
 
 import com.vitaliykairachka.phone_book.repository.UserRepository;
 import com.vitaliykairachka.phone_book.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserServiceImplementation implements UserService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserServiceImplementation(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public List<User> getAllUsers() {

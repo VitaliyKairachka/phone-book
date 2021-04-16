@@ -1,7 +1,6 @@
 package com.vitaliykairachka.phone_book.service;
 
 import com.vitaliykairachka.phone_book.entity.Contact;
-
 import java.util.List;
 
 public interface ContactService {

@@ -2,16 +2,17 @@ package com.vitaliykairachka.phone_book.service;
 
 import com.vitaliykairachka.phone_book.repository.ContactRepository;
 import com.vitaliykairachka.phone_book.entity.Contact;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ContactServiceImplementation implements ContactService {
-    @Autowired
-    private ContactRepository contactRepository;
+    private final ContactRepository contactRepository;
+
+    public ContactServiceImplementation(ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+    }
 
     @Override
     public List<Contact> getAllUserContacts(int id) {

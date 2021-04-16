@@ -5,7 +5,6 @@ import com.vitaliykairachka.phone_book.entity.User;
 import com.vitaliykairachka.phone_book.service.ContactService;
 import com.vitaliykairachka.phone_book.service.UserService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController

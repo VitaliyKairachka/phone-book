@@ -1,7 +1,10 @@
 package com.vitaliykairachka.phone_book.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -9,6 +12,10 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "contacts")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,54 +42,4 @@ public class Contact {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "id_user", updatable = false, nullable = false)
     private User user;
-
-    public Contact() {
-    }
-
-    public Contact(String name, String surname, String phoneNumber) {
-        this.name = name;
-        this.surname = surname;
-        this.phoneNumber = phoneNumber;
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
