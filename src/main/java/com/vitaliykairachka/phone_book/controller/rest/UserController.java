@@ -1,4 +1,4 @@
-package com.vitaliykairachka.phone_book.controller;
+package com.vitaliykairachka.phone_book.controller.rest;
 
 import com.vitaliykairachka.phone_book.entity.User;
 import com.vitaliykairachka.phone_book.service.UserService;

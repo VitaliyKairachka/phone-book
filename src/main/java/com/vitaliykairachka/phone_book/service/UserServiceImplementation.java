@@ -36,7 +36,7 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public List<User> getAllUsersByName(String name) {
-        return userRepository.findAllByNameContaining(name);
+        return userRepository.findUsersByNameContaining(name);
     }
 
 

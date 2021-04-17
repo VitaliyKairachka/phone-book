@@ -21,7 +21,7 @@ public class ContactServiceImplementation implements ContactService {
 
     @Override
     public Contact getPhoneNumber(String number) {
-        return contactRepository.findByPhoneNumber(number);
+        return contactRepository.findContactByPhoneNumber(number);
     }
 
 
