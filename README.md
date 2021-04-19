@@ -10,6 +10,8 @@
 
 Скрипт для создания таблиц лежит в папке "phone_book\src\main\resources\database.sql"
 
+Также реализован WEB-интерфейс
+
 
 # Rest Api запросы
 
